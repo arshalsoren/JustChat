@@ -1,15 +1,25 @@
+const { userLeave } = require("../../utils/users");
+
 const chatForm = document.getElementById('chat-form');
 const chatMessages = document.querySelector('.chat-messages');
+const roomNane = document.getElementById('room-name');
+const userList = document.getElementById('users');
 
 // Get username and room from URL
 const { username, room } = Qs.parse(location.search, {
-    ignoreQueryPrefix: true
+    ignoreQueryPrefix: true // ignores special characters in the url 
 });
 
 const socket = io();
 
 // Join chatroom
 socket.emit('joinRoom', { username, room });
+
+// Get room and users
+socket.on('roomUsers', ({ }) => {
+    outputRoomName(room);
+    outputUsers(users);
+});
 
 // Message from server
 socket.on('message', (message) => {
@@ -35,6 +45,7 @@ chatForm.addEventListener('submit', (e) => {
     e.target.elements.msg.focus();
 });
 
+// Output Message to DOM
 function outputMessage(message) {
     const div = document.createElement('div');
     div.classList.add('message');
@@ -45,4 +56,16 @@ function outputMessage(message) {
         </p>
         `;
     document.querySelector('.chat-messages').appendChild(div);
+}
+
+// Output RoomName to DOM
+function outputRoomName(room) {
+    roomNane.innerText = room;
+}
+
+// Output Users to DOM
+function outputUsers(users) {
+    userList.innerHTML=`
+        ${users.map(user=>`<li>${user.username}</li>`).join('')}
+    `;
 }
