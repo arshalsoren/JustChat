@@ -1,8 +1,8 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
 :root {
-    --dark-color-a: #B60533;
-    --dark-color-b: #C40A3A;
-    --light-color: #150941;
+    --bg-color: #162b32;
+    --bg-color-2: #ff4838;
+    --text-color: #e1e2e2;
     --success-color: #5cb85c;
     --error-color: #d9534f;
 }
@@ -16,7 +16,7 @@
 body {
     font-family: 'Roboto', sans-serif;
     font-size: 16px;
-    background: var(--light-color);
+    background: var(--bg-color);
     margin: auto;
     display: flex;
     align-items: center;
@@ -35,8 +35,8 @@ a {
 .btn {
     cursor: pointer;
     padding: 10px 15px;
-    background: var(--light-color);
-    color: #ffffff;
+    background: var(--bg-color);
+    color: var(--text-color);
     border: 0;
     border-radius: 8px;
     font-size: 17px;
@@ -45,10 +45,10 @@ a {
 .join-btn {
     cursor: pointer;
     padding: 20px 15px;
-    background: var(--light-color);
-    color: #ffffff;
+    background: var(--bg-color);
+    color: var(--text-color);
     border: 0;
-    border-radius: 8px;
+    border-radius: 5px;
     width: 100%;
     font-size: 17px;
 }
@@ -56,8 +56,8 @@ a {
 .send-btn {
     cursor: pointer;
     padding: 10px 15px;
-    background: var(--light-color);
-    color: #ffffff;
+    background: var(--bg-color);
+    color: var(--text-color);
     border: 0;
     border-radius: 8px;
     font-size: 17px;
@@ -69,21 +69,23 @@ a {
 .join-container {
     width: 600px;
     margin: 80px auto;
-    color: #fff;
+    color: var(--text-color);
 }
 
 .join-header {
     text-align: center;
     padding: 20px;
-    color: #ffffff;
-    background: var(--dark-color-a);
+    color: var(--text-color);
+    background: var(--bg-color-2);
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
 }
 
 .join-main {
     padding: 30px 40px;
-    background: var(--dark-color-b);
+    background: var(--bg-color-2);
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
 }
 
 .join-main p {
@@ -102,14 +104,16 @@ a {
 .join-main input[type='text'] {
     font-size: 16px;
     padding: 5px;
-    height: 40px;
+    height: 50px;
     width: 100%;
+    border-radius: 5px;
+    outline: none;
 }
 
 .join-main select {
     font-size: 16px;
     padding: 5px;
-    height: 40px;
+    height: 50px;
     width: 100%;
 }
 
@@ -131,15 +135,15 @@ a {
 
 .chat-container {
     max-width: 1100px;
-    background: #fff;
+    background: var(--text-color);
     margin: 30px auto;
     border-radius: 5px;
-    overflow: hidden;
+    overflow: auto;
 }
 
 .chat-header {
-    background: var(--dark-color-a);
-    color: #ffffff;
+    background: var(--bg-color-2);
+    color: var(--text-color);
     padding: 15px;
     display: flex;
     align-items: center;
@@ -152,10 +156,11 @@ a {
 }
 
 .chat-sidebar {
-    background: var(--dark-color-a);
-    color: #fff;
+    background: var(--bg-color-2);
+    color: var(--text-color);
     padding: 20px 20px 60px;
-    overflow-y: scroll;
+    overflow-y: auto;
+    overflow-x: auto;
 }
 
 .chat-sidebar h2 {
@@ -173,17 +178,17 @@ a {
 }
 
 .chat-messages {
-    background: var(--dark-color-a);
+    background: var(--bg-color-2);
     padding: 30px;
     max-height: 500px;
-    overflow-y: scroll;
+    overflow-y: auto;
 }
 
 .chat-messages .message {
     padding: 10px;
     margin-bottom: 15px;
-    background-color: var(--light-color);
-    color: #ffffff;
+    background-color: var(--bg-color);
+    color: var(--text-color);
     border-radius: 5px;
 }
 
@@ -195,12 +200,12 @@ a {
 }
 
 .chat-messages .message .meta span {
-    color: var(--dark-color-a);
+    color: var(--bg-color-2);
 }
 
 .chat-form-container {
     padding: 20px 30px;
-    background-color: var(--dark-color-a);
+    background-color: var(--bg-color-2);
 }
 
 .chat-form-container form {
