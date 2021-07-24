@@ -1,8 +1,6 @@
-const { userLeave } = require("../../utils/users");
-
 const chatForm = document.getElementById('chat-form');
 const chatMessages = document.querySelector('.chat-messages');
-const roomNane = document.getElementById('room-name');
+const roomName = document.getElementById('room-name');
 const userList = document.getElementById('users');
 
 // Get username and room from URL
@@ -16,7 +14,7 @@ const socket = io();
 socket.emit('joinRoom', { username, room });
 
 // Get room and users
-socket.on('roomUsers', ({ }) => {
+socket.on('roomUsers', ({ room, users }) => {
     outputRoomName(room);
     outputUsers(users);
 });
@@ -60,12 +58,12 @@ function outputMessage(message) {
 
 // Output RoomName to DOM
 function outputRoomName(room) {
-    roomNane.innerText = room;
+    roomName.innerText = room;
 }
 
 // Output Users to DOM
 function outputUsers(users) {
-    userList.innerHTML=`
-        ${users.map(user=>`<li>${user.username}</li>`).join('')}
+    userList.innerHTML = `
+        ${users.map(user => `<li>${user.username}</li>`).join('')}
     `;
 }
